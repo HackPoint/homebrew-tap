@@ -1,6 +1,11 @@
-cask "lumen" do
-  version "1.1.3"
-  sha256 "da3dab84265367b9058f5ce8ffa3fe8ed1ced97b23dc3d802d459923a7c21623"
+# Token is "lumen-app", not "lumen": homebrew/cask already ships an unrelated
+# `lumen` (anishathalye/lumen, a screen-brightness tool). With the same token, an
+# unqualified `brew install --cask lumen` installed THAT app instead of this one,
+# and `brew upgrade --cask lumen` offered to replace this one with it. Pairs with
+# the `lumen-cli` formula; the installed app and the `lumen` command are unchanged.
+cask "lumen-app" do
+  version "1.1.4"
+  sha256 "357e830bec13e657ee54729a5b8703790a033fd659ae2f1ffcfa950a8eb8e5c4"
 
   url "https://github.com/HackPoint/lumen/releases/download/v#{version}/Lumen_#{version}_aarch64.dmg"
   name "Lumen"
