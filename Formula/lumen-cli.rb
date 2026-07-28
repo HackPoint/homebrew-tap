@@ -20,7 +20,7 @@ class LumenCli < Formula
   on_linux do
     on_intel do
       url "https://github.com/HackPoint/lumen/releases/download/v#{version}/lumen-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "302792e157f76d8fdd0ed8c841ef4d73657e3eed4c610fd1cfd5e215fdf43477"
+      sha256 "7859b6af8d9bd2129741dbf64e21053d236778ba0a30814730b1c5685c3d9ffc"
     end
   end
 
