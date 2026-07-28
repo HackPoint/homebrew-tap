@@ -1,6 +1,6 @@
 cask "lumen" do
-  version "1.1.0"
-  sha256 "9c4756cf4f833dba9d8c89db5577d630a027302595a085978cf7688a707f7c4a"
+  version "1.1.1"
+  sha256 "8c1fe933a102183cdbd85eae91b1f0d4df1750debf653fe827c017fcef1f849a"
 
   url "https://github.com/HackPoint/lumen/releases/download/v#{version}/Lumen_#{version}_aarch64.dmg"
   name "Lumen"
@@ -21,12 +21,30 @@ cask "lumen" do
     system_command "/usr/bin/xattr",
       args: ["-dr", "com.apple.quarantine", "#{appdir}/Lumen.app"],
       sudo: false
+
+    # Launch straight after install so the menu-bar icon is simply there. Lumen
+    # is a tray app with both windows hidden at startup, so this shows an icon
+    # rather than stealing focus with a window. On first run it registers a login
+    # item, so this is the only time the launch needs prompting.
+    #
+    # `-g` keeps the app in the background: without it, `open` activates Lumen and
+    # pulls focus out of the terminal the user is still watching brew run in.
+    system_command "/usr/bin/open",
+      args: ["-g", "-a", "#{appdir}/Lumen.app"],
+      sudo: false
   end
+
+  # Quitting first: the app was launched above and by its login item, so an
+  # uninstall that left it running would keep a tray icon for a deleted app.
+  uninstall quit:       "io.speedata.lumen",
+            launchctl:  "io.speedata.lumen"
 
   zap trash: [
     "~/Library/Application Support/io.speedata.lumen",
     "~/Library/Caches/io.speedata.lumen",
     "~/Library/Logs/io.speedata.lumen",
     "~/Library/WebKit/io.speedata.lumen",
+    # The login item the app registers on first run.
+    "~/Library/LaunchAgents/io.speedata.lumen.plist",
   ]
 end
