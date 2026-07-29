@@ -1,12 +1,12 @@
 class LumenCli < Formula
   desc "Terminal dashboard for Claude Code — live context fill, cost, and optimizer savings"
   homepage "https://github.com/HackPoint/lumen"
-  version "1.2.1"
+  version "1.2.2"
 
   on_macos do
     on_arm do
       url "https://github.com/HackPoint/lumen/releases/download/v#{version}/lumen-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "68e0cb96e6021158dce6f16301c4945969f32b94e2ee0a334b77908295e4bcad"
+      sha256 "1340f292383d3bdf67639550d5d68e4ae721bc01ab1c5d93d1d05c80135bcb03"
     end
   end
 
@@ -20,7 +20,7 @@ class LumenCli < Formula
   on_linux do
     on_intel do
       url "https://github.com/HackPoint/lumen/releases/download/v#{version}/lumen-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "62b0993bc003cb0179892e0ccbc0427f7a57b93d64e3e1c84d7ab7f6a0526081"
+      sha256 "2f9c86ed51b5637ffbf889192ea394947ab6e4364cf78913d76b665d525ea904"
     end
   end
 
