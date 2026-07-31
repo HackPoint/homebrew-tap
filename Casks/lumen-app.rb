@@ -4,8 +4,8 @@
 # and `brew upgrade --cask lumen` offered to replace this one with it. Pairs with
 # the `lumen-cli` formula; the installed app and the `lumen` command are unchanged.
 cask "lumen-app" do
-  version "1.5.0"
-  sha256 "c1d18d747fddfafc77483677727e40fcf34e291251744970898090574e236ce3"
+  version "1.5.1"
+  sha256 "a70c1b28a627c0c460e0432ead47c1336f1b465ceb182a5dda1bed04ea7c190c"
 
   url "https://github.com/HackPoint/lumen/releases/download/v#{version}/Lumen_#{version}_aarch64.dmg"
   name "Lumen"
@@ -41,8 +41,12 @@ cask "lumen-app" do
 
   # Quitting first: the app was launched above and by its login item, so an
   # uninstall that left it running would keep a tray icon for a deleted app.
+  # `launchctl` takes the agent's Label, not the bundle id. The autostart plugin writes
+  # ~/Library/LaunchAgents/Lumen.plist with Label "Lumen", so unloading
+  # "io.speedata.lumen" matched nothing and every uninstall left the login item behind,
+  # still trying to launch a deleted app at each boot. Reported in issue #5.
   uninstall quit:       "io.speedata.lumen",
-            launchctl:  "io.speedata.lumen"
+            launchctl:  "Lumen"
 
   zap trash: [
     "~/Library/Application Support/io.speedata.lumen",
@@ -50,6 +54,9 @@ cask "lumen-app" do
     "~/Library/Logs/io.speedata.lumen",
     "~/Library/WebKit/io.speedata.lumen",
     # The login item the app registers on first run.
+    # The file the plugin actually writes. The bundle-id name below is kept for
+    # installs made before the agent was renamed, since zap should clean those too.
+    "~/Library/LaunchAgents/Lumen.plist",
     "~/Library/LaunchAgents/io.speedata.lumen.plist",
   ]
 end
