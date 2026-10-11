@@ -4,8 +4,8 @@
 # and `brew upgrade --cask lumen` offered to replace this one with it. Pairs with
 # the `lumen-cli` formula; the installed app and the `lumen` command are unchanged.
 cask "lumen-app" do
-  version "1.6.0"
-  sha256 "9b83472b405ac00db7ec35c1c26f12e6ccca417b2015077f8225757477c0f6f0"
+  version "1.7.0"
+  sha256 "f7deb0f490eb7ff36dd84c2fee199beb3cdf5fcaefc32888eba676a70f259b81"
 
   url "https://github.com/HackPoint/lumen/releases/download/v#{version}/Lumen_#{version}_aarch64.dmg"
   name "Lumen"
