@@ -5,7 +5,7 @@
 # the `lumen-cli` formula; the installed app and the `lumen` command are unchanged.
 cask "lumen-app" do
   version "1.9.0"
-  sha256 "ff9eeb5860e98d6daeb9a2d75c789fea9d93106bd44afc1f01568c117264fc08"
+  sha256 "eb1b528d544684e71f7d41cd9c961315620b012afcbfa013b304e8bcdb297d01"
 
   url "https://github.com/HackPoint/lumen/releases/download/v#{version}/Lumen_#{version}_aarch64.dmg"
   name "Lumen"

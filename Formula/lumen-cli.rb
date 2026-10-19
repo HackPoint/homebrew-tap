@@ -6,7 +6,7 @@ class LumenCli < Formula
   on_macos do
     on_arm do
       url "https://github.com/HackPoint/lumen/releases/download/v#{version}/lumen-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "2f3b56eceaec948419e9b390d13a3339157933e06aa1084738d7c0201bf7e2f8"
+      sha256 "0607351ddba5303ebc74a8157b4422c2a5abe4c883ab646ac4184b967f85d73a"
     end
   end
 
@@ -20,7 +20,7 @@ class LumenCli < Formula
   on_linux do
     on_intel do
       url "https://github.com/HackPoint/lumen/releases/download/v#{version}/lumen-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "ebf11c8964a12e1336e15013ce999d7a07ffb251352802615b787a1d4c7ecd6c"
+      sha256 "0038019358cbe7226f90db24d6064e6cd29d038c0e8d7a120476003b1e0cbc6e"
     end
   end
 
